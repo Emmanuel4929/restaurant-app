@@ -27,6 +27,11 @@ app.use(
 );
 app.use(express.json());
 
+// Endpoint de salud
+app.get("/health", (req, res) => {
+  res.json({ status: "ok" });
+});
+
 // 2) Limita a 100 peticiones cada 15 minutos por IP para evitar abusos o ataques.
 
 const apiLimiter = rateLimit({
