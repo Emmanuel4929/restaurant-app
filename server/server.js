@@ -13,6 +13,9 @@ const socketHandler = require("./sockets"); // lógica personalizada para maneja
 
 const app = express();
 
+// Esto le dice a Express que confíe en Render (un proxy)
+app.set("trust proxy", 1);
+
 // 1) Seguridad y parsing
 app.use(helmet());
 app.use(
@@ -25,9 +28,13 @@ app.use(
 app.use(express.json());
 
 // 2) Limita a 100 peticiones cada 15 minutos por IP para evitar abusos o ataques.
+
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
+  keyGenerator: (req) => req.ip,
   message: "Demasiadas peticiones, vuelve a intentarlo más tarde",
 });
 app.use("/api/", apiLimiter);
