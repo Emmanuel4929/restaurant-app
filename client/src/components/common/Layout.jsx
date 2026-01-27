@@ -1,10 +1,15 @@
 // src/components/common/Layout.jsx
+
+//* Importación de hooks y utilidades
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
-import logo from "../../assets/restaurant-logo.jpg";
 
-// Botón de logout
+//* Importar imágenes desde src/assets (Vite las procesa y genera URLs válidas en producción)
+import logo from "../../assets/restaurant-logo.jpg";
+import restbg from "../../assets/rest-bg.jpg"; // <-- usa .jpeg si así se llama tu archivo
+
+//* Botón de logout
 function LogoutButton() {
   const { logout } = useAuth();
   const navigate = useNavigate();
@@ -24,7 +29,7 @@ function LogoutButton() {
   );
 }
 
-// Navbar común con links según rol y campana de notificaciones
+//* Navbar común con links según rol y campana de notificaciones
 function Navbar({
   notifications = [],
   unreadCount = 0,
@@ -47,14 +52,12 @@ function Navbar({
     setShowNotif(next);
     if (next) {
       onReadNotifications(); // marcamos como leídas
-      // programamos auto-dismiss tras X ms
       if (dismissTimer) clearTimeout(dismissTimer);
       const t = setTimeout(() => {
         onClearNotifications();
-      }, 5000); // aquí 10 segundos, cámbialo al que desees
+      }, 5000);
       setDismissTimer(t);
     } else {
-      // si cierras antes, cancelamos el timer
       if (dismissTimer) {
         clearTimeout(dismissTimer);
         setDismissTimer(null);
@@ -131,7 +134,7 @@ function Navbar({
   );
 }
 
-// Layout principal con imagen de fondo
+//* Layout principal con imagen de fondo (usando import desde src/assets)
 export default function Layout({
   children,
   notifications,
@@ -142,7 +145,9 @@ export default function Layout({
   return (
     <div
       className="min-h-screen bg-cover bg-center"
-      style={{ backgroundImage: "url('/src/assets/rest-bg.jpeg')" }}
+      style={{
+        backgroundImage: `url(${restbg})`, // ✅ Vite reemplaza por la URL final en build
+      }}
     >
       <Navbar
         notifications={notifications}
