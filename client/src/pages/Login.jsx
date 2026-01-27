@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../hooks/useAuth";
 import Notification from "../components/common/Notification";
+import restaurantLogo from "../assets/restaurant-logo.jpg";
 
 //* URL base de la API desde variables de entorno
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
@@ -70,11 +71,7 @@ export default function Login() {
       >
         {/* Logo del restaurante */}
         <div className="flex justify-center">
-          <img
-            src="/src/assets/restaurant-logo.jpg"
-            alt="RestoApp"
-            className="h-16 w-16"
-          />
+          <img src={restaurantLogo} alt="RestoApp" className="h-16 w-16" />
         </div>
         {/* Título de bienvenida */}
         <h2 className="text-3xl font-bold text-center text-gray-800">
