@@ -7,7 +7,7 @@ import { useAuth } from "../../hooks/useAuth";
 
 //* Importar imágenes desde src/assets (Vite las procesa y genera URLs válidas en producción)
 import logo from "../../assets/restaurant-logo.jpg";
-import restbg from "../../assets/rest-bg.jpg"; // <-- usa .jpeg si así se llama tu archivo
+import restbg from "../../assets/rest-bg.jpg";
 
 //* Botón de logout
 function LogoutButton() {
