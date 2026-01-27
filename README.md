@@ -54,10 +54,13 @@ _Sección de nuevo registro según el rol requerido._
 - **Autenticación:** JWT
 - **Validación:** Joi
 - **Despliegue:**
-  - Frontend en Vercel: https://tu-usuario.vercel.app
-  - Backend en Railway: https://restaurant-app-production.up.railway.app
+  - Frontend en Vercel: https://restaurant-app-vert-two.vercel.app
+  - Backend en Render:
 
 ---
+
+**Demo Frontend (Vercel)**: https://restaurant-app-vert-two.vercel.app
+(App web full‑stack para gestionar productos, mesas y órdenes en tiempo real con roles (mesero, chef, cajero y admin).)
 
 ## 🛠️ Instalación
 
@@ -119,6 +122,25 @@ npm run dev       # o yarn dev
 
 - Y ya estaria corriendo en la App en https://localhost:5173
 ```
+
+## 🚪 Roles y funcionalidades
+
+- **Mesero**: crea órdenes por mesa.
+- **Chef**: ve pedidos en tiempo real y gestiona su estado.
+- **Cajero**: checkout por número de mesa.
+- **Admin**: CRUD de productos, mesas y usuarios.
+
+## 🧪 Prueba rápida
+
+1. Entra a la demo: https://restaurant-app-vert-two.vercel.app
+2. Regístrate o inicia sesión con usuarios demo:
+   - meseronumber1@hotmail.com / Waiter1\*
+   - chefnum1@gmail.com / Cocinero1\*
+   - lauracash1@outlook.com / Laucash1\*
+   - Carloadm2@gmail.com / Carmin2\*
+3. Explora el flujo: crear orden (mesero) → ver en cocina (chef) → checkout (cajero).
+
+> _Nota_: Si la API se pausa (free tier), el primer request puede tardar unos segundos.
 
 ### Uso
 
