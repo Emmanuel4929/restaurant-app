@@ -28,8 +28,14 @@ app.use(
 app.use(express.json());
 
 // Endpoint de salud
-app.get("/health", (req, res) => {
-  res.json({ status: "ok" });
+
+// 0 = disconnected, 1 = connected, 2 = connecting, 3 = disconnecting
+const dbStates = ["disconnected", "connected", "connecting", "disconnecting"];
+const stateIdx = require("mongoose").connection.readyState ?? 0;
+res.json({
+  status: "ok",
+  db: dbStates[stateIdx] || "unknown",
+  time: new Date().toISOString(),
 });
 
 // 2) Limita a 100 peticiones cada 15 minutos por IP para evitar abusos o ataques.
